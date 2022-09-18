@@ -33,6 +33,16 @@ class CoreDataManager {
     }
     
     
+    func getMovieById(id: NSManagedObjectID) -> Movie? {
+        do {
+            return try persistantContainer.viewContext.existingObject(with: id) as? Movie
+        } catch {
+            print("getMovieById: no movie found.\n\(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    
     func getAllMovies() -> [Movie] {
         let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
         
@@ -40,6 +50,18 @@ class CoreDataManager {
             return try persistantContainer.viewContext.fetch(fetchRequest)
         } catch {
             fatalError(error.localizedDescription)
+        }
+    }
+    
+    
+    func deleteMovie(movie: Movie) {
+        persistantContainer.viewContext.delete(movie)
+        
+        do {
+            try persistantContainer.viewContext.save()
+        } catch {
+            persistantContainer.viewContext.rollback()
+            fatalError("Could not delete movie")
         }
     }
 }

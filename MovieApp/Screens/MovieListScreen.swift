@@ -16,9 +16,13 @@ struct MovieListScreen: View {
         List {
             
             ForEach(movieListVM.movies, id: \.id) { movie in
-                // replaced the origanl Text() with the Cell definition. Very Nice.
+                // replaced the origanal Text() with the Cell definition. Very Nice.
                 MovieCell(movie: movie)
             }
+            // Instructor comment was to not do the delete in a closure here.
+            // I While we probably could, I assume there would be a bunch of jumping around if you were deleting multiple movies
+            // That functionality isn't enabled here though. I should go back later and learn how to do that.
+            .onDelete(perform: deleteMovie)
         }
         .listStyle(PlainListStyle())
         .navigationTitle("Movies")
@@ -38,6 +42,20 @@ struct MovieListScreen: View {
         .onAppear(perform: {
             movieListVM.getAllMovies()
         })
+    }
+    
+    private func deleteMovie(at indexSet: IndexSet) {
+        // There will only ever be one movie, but we can at least handle if the code gets updated
+        // to allow the user to select multiple movies to delete
+        indexSet.forEach { index in
+            let movie = movieListVM.movies[index]
+            
+            movieListVM.deleteMovie(movie: movie)
+            
+            // causes the view to refresh
+            movieListVM.getAllMovies()
+            
+        }
     }
 }
 

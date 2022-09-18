@@ -14,6 +14,14 @@ class MovieListViewModel : ObservableObject {
     //@Published is what will tell the view that there are changes to the list
     @Published var movies = [MovieViewModel]()
     
+    func deleteMovie(movie: MovieViewModel) {
+        let movie = CoreDataManager.shared.getMovieById(id: movie.id)
+        if let movie = movie {
+            CoreDataManager.shared.deleteMovie(movie: movie)
+        }
+    }
+    
+    
     func getAllMovies() {
         
         let movies = CoreDataManager.shared.getAllMovies()
