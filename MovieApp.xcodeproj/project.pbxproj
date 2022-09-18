@@ -16,6 +16,7 @@
 		8D5C25D025E6FA7C002BAF40 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C25CF25E6FA7C002BAF40 /* RatingView.swift */; };
 		8D5C25DF25E72747002BAF40 /* MovieListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C25DE25E72747002BAF40 /* MovieListScreen.swift */; };
 		8D5C25E225E72CD4002BAF40 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C25E125E72CD4002BAF40 /* Date+Extensions.swift */; };
+		E6B9BE3728D744B80013EC54 /* MovieAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6B9BE3528D744B80013EC54 /* MovieAppModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		8D5C25CF25E6FA7C002BAF40 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		8D5C25DE25E72747002BAF40 /* MovieListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListScreen.swift; sourceTree = "<group>"; };
 		8D5C25E125E72CD4002BAF40 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		E6B9BE3628D744B80013EC54 /* MovieAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieAppModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		8D0926BF25E59B3B00502FF8 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				E6B9BE3528D744B80013EC54 /* MovieAppModel.xcdatamodeld */,
 				8D5C25CE25E6FA70002BAF40 /* Views */,
 				8D5C25C625E6F3CB002BAF40 /* Extensions */,
 				8D2C953E25E69E3500459F4F /* Screens */,
@@ -197,6 +200,7 @@
 				8D5C25E225E72CD4002BAF40 /* Date+Extensions.swift in Sources */,
 				8D0926D525E5AE9C00502FF8 /* CoreDataManager.swift in Sources */,
 				8D5C25C825E6F3D8002BAF40 /* View+Extensions.swift in Sources */,
+				E6B9BE3728D744B80013EC54 /* MovieAppModel.xcdatamodeld in Sources */,
 				8D5C25DF25E72747002BAF40 /* MovieListScreen.swift in Sources */,
 				8D0926C125E59B3B00502FF8 /* MovieAppApp.swift in Sources */,
 				8D5C25D025E6FA7C002BAF40 /* RatingView.swift in Sources */,
@@ -388,6 +392,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E6B9BE3528D744B80013EC54 /* MovieAppModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E6B9BE3628D744B80013EC54 /* MovieAppModel.xcdatamodel */,
+			);
+			currentVersion = E6B9BE3628D744B80013EC54 /* MovieAppModel.xcdatamodel */;
+			path = MovieAppModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8D0926B525E59B3B00502FF8 /* Project object */;
 }

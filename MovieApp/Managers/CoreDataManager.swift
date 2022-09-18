@@ -9,6 +9,6 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
-    
+    // This is added code from the lecture
    
 }
