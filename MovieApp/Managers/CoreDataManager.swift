@@ -12,7 +12,6 @@ class CoreDataManager {
     // This is added code from the lecture
    
     let persistantContainer: NSPersistentContainer
-    
     static let shared = CoreDataManager() //A singleton instance
     
     private init() {
@@ -24,11 +23,23 @@ class CoreDataManager {
         }
     }
     
+    
     func save() {
         do {
             try persistantContainer.viewContext.save()
         } catch {
             fatalError("Failed to save a movie \(error.localizedDescription)")
+        }
+    }
+    
+    
+    func getAllMovies() -> [Movie] {
+        let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
+        
+        do {
+            return try persistantContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            fatalError(error.localizedDescription)
         }
     }
 }
