@@ -24,4 +24,11 @@ class CoreDataManager {
         }
     }
     
+    func save() {
+        do {
+            try persistantContainer.viewContext.save()
+        } catch {
+            fatalError("Failed to save a movie \(error.localizedDescription)")
+        }
+    }
 }

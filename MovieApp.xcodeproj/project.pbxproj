@@ -17,6 +17,7 @@
 		8D5C25DF25E72747002BAF40 /* MovieListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C25DE25E72747002BAF40 /* MovieListScreen.swift */; };
 		8D5C25E225E72CD4002BAF40 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C25E125E72CD4002BAF40 /* Date+Extensions.swift */; };
 		E6B9BE3728D744B80013EC54 /* MovieAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6B9BE3528D744B80013EC54 /* MovieAppModel.xcdatamodeld */; };
+		E6B9BE3928D748520013EC54 /* AddMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B9BE3828D748520013EC54 /* AddMovieViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		8D5C25DE25E72747002BAF40 /* MovieListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListScreen.swift; sourceTree = "<group>"; };
 		8D5C25E125E72CD4002BAF40 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		E6B9BE3628D744B80013EC54 /* MovieAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieAppModel.xcdatamodel; sourceTree = "<group>"; };
+		E6B9BE3828D748520013EC54 /* AddMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		8D2C952C25E6907D00459F4F /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				E6B9BE3828D748520013EC54 /* AddMovieViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5C25C325E6EBD0002BAF40 /* AddMovieScreen.swift in Sources */,
+				E6B9BE3928D748520013EC54 /* AddMovieViewModel.swift in Sources */,
 				8D5C25E225E72CD4002BAF40 /* Date+Extensions.swift in Sources */,
 				8D0926D525E5AE9C00502FF8 /* CoreDataManager.swift in Sources */,
 				8D5C25C825E6F3D8002BAF40 /* View+Extensions.swift in Sources */,
