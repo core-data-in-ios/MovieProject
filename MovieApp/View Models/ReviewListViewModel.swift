@@ -12,13 +12,18 @@ class ReviewListViewModel: ObservableObject {
     
     @Published var reviews = [ReviewViewModel]()
     
-    func getReviewsByMovie(movieVM: MovieViewModel) {
+//    func getReviewsByMovie(movieVM: MovieViewModel) {
+//        let movie = CoreDataManager.shared.getMovieById(id: movieVM.id)
+//        if let movie = movie {
+//            DispatchQueue.main.async {
+//                self.reviews = (movie.reviews?.allObjects as! [Review]).map(ReviewViewModel.init)
+//            }
+//        }
+//    }
     
-        let movie = CoreDataManager.shared.getMovieById(id: movieVM.id)
-        if let movie = movie {
-            DispatchQueue.main.async {
-                self.reviews = (movie.reviews?.allObjects as! [Review]).map(ReviewViewModel.init)
-            }
+    func getReviewsByMovie(movieVM: MovieViewModel) {
+        DispatchQueue.main.async {
+            self.reviews = (Review.getReviewsByMovieId(MovieId: movieVM.id)).map(ReviewViewModel.init)
         }
         
     }
