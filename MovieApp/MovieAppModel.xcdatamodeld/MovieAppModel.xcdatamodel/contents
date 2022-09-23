@@ -8,9 +8,9 @@
         <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="movie" inverseEntity="Review"/>
     </entity>
     <entity name="Review" representedClassName="Review" syncable="YES" codeGenerationType="class">
-        <attribute name="body" attributeType="String"/>
-        <attribute name="publishedAt" attributeType="Date" defaultDateTimeInterval="685520580" usesScalarValueType="NO"/>
+        <attribute name="publishedAt" attributeType="Date" defaultDateTimeInterval="682842180" usesScalarValueType="NO"/>
+        <attribute name="text" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
-        <relationship name="movie" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="reviews" inverseEntity="Movie"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="reviews" inverseEntity="Movie"/>
     </entity>
 </model>

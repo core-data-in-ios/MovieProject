@@ -20,7 +20,7 @@ class AddMovieViewModel : ObservableObject {
     
     func save() {
         let manager = CoreDataManager.shared
-        let movie = Movie(context: manager.persistantContainer.viewContext)
+        let movie = Movie(context: manager.viewContext)
         movie.title = title
         movie.director = director
         movie.rating = Double(rating ?? 0)

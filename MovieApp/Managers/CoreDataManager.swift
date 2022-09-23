@@ -7,61 +7,75 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 class CoreDataManager {
-    // This is added code from the lecture
-   
-    let persistantContainer: NSPersistentContainer
-    static let shared = CoreDataManager() //A singleton instance
+    
+    let persistentContainer: NSPersistentContainer
+    
+    static let shared = CoreDataManager()
     
     private init() {
-        persistantContainer = NSPersistentContainer(name: "MovieAppModel") // the name of the entity
-        persistantContainer.loadPersistentStores { (description, error) in
+        
+        persistentContainer = NSPersistentContainer(name: "MovieAppModel")
+        persistentContainer.loadPersistentStores { (description, error) in
             if let error = error {
-                fatalError("failed to initialize Core Data \(error.localizedDescription)")
+                fatalError("Failed to initialize Core Data \(error)")
             }
         }
+        
+        let directories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        print(directories[0])
     }
     
-    
-    func save() {
-        do {
-            try persistantContainer.viewContext.save()
-        } catch {
-            fatalError("Failed to save a movie \(error.localizedDescription)")
-        }
+    var viewContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
     }
-    
     
     func getMovieById(id: NSManagedObjectID) -> Movie? {
+        
         do {
-            return try persistantContainer.viewContext.existingObject(with: id) as? Movie
+            return try persistentContainer.viewContext.existingObject(with: id) as? Movie
         } catch {
-            print("getMovieById: no movie found.\n\(error.localizedDescription)")
+            print(error)
             return nil
         }
+        
     }
     
+    func deleteMovie(_ movie: Movie) {
+        
+        persistentContainer.viewContext.delete(movie)
+        
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to delete movie \(error)")
+        }
+        
+    }
     
     func getAllMovies() -> [Movie] {
+        
         let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
         
         do {
-            return try persistantContainer.viewContext.fetch(fetchRequest)
+            return try persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
-            fatalError(error.localizedDescription)
+            return []
         }
+        
     }
     
-    
-    func deleteMovie(movie: Movie) {
-        persistantContainer.viewContext.delete(movie)
-        
+    func save() {
         do {
-            try persistantContainer.viewContext.save()
+            try persistentContainer.viewContext.save()
         } catch {
-            persistantContainer.viewContext.rollback()
-            fatalError("Could not delete movie")
+            persistentContainer.viewContext.rollback()
+            print("Failed to save a movie \(error)")
         }
     }
 }
+
+

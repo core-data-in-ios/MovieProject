@@ -17,7 +17,7 @@ class MovieListViewModel : ObservableObject {
     func deleteMovie(movie: MovieViewModel) {
         let movie = CoreDataManager.shared.getMovieById(id: movie.id)
         if let movie = movie {
-            CoreDataManager.shared.deleteMovie(movie: movie)
+            CoreDataManager.shared.deleteMovie(movie)
         }
     }
     
