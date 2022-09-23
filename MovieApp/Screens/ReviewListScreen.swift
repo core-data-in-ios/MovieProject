@@ -2,7 +2,7 @@
 //  ReviewListScreen.swift
 //  MovieApp
 //
-//  Created by Chris Hand on 9/20/22.
+//  Created by Mohammad Azam on 3/2/21.
 //
 
 import SwiftUI
@@ -10,13 +10,15 @@ import SwiftUI
 struct ReviewListScreen: View {
     
     @State private var isPresented: Bool = false
+    let movie: MovieViewModel
     
     var body: some View {
         VStack {
-            List(0...20, id:\.self) { index in
+            List(0...20, id: \.self) { index in
                 HStack {
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Review \(index)")
+                        
                     }
                     Spacer()
                     Text("Review Published Date")
@@ -25,14 +27,22 @@ struct ReviewListScreen: View {
         }
         .navigationTitle("Movie Title")
         .navigationBarItems(trailing: Button("Add New Review") {
-            isPresented = true
+             isPresented = true
         })
-        .embedInNavigationView()
+        .sheet(isPresented: $isPresented, onDismiss: {
+            
+        }, content: {
+            AddReviewScreen(movie: movie)
+        })
+        .onAppear(perform: {
+            
+        })
     }
 }
 
 struct ReviewListScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewListScreen()
+        let movie = MovieViewModel(movie: Movie(context: CoreDataManager.shared.viewContext))
+        ReviewListScreen(movie: movie).embedInNavigationView()
     }
 }

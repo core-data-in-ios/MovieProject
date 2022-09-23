@@ -17,7 +17,13 @@ struct MovieListScreen: View {
             
             ForEach(movieListVM.movies, id: \.id) { movie in
                 // replaced the origanal Text() with the Cell definition. Very Nice.
-                MovieCell(movie: movie)
+//                NavigationLink(
+//                    destination: ReviewListScreen(movie: movie),
+//                    label { MovieCell(movie: movie) })
+                NavigationLink(destination: ReviewListScreen(movie: movie), label: {
+                    MovieCell(movie: movie)
+                })
+                
             }
             // Instructor comment was to not do the delete in a closure here.
             // I While we probably could, I assume there would be a bunch of jumping around if you were deleting multiple movies
